@@ -39,4 +39,12 @@
   ("ac-source-ropemacs" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("from" .
-   [3 0 0 0])))
+   [3 0 0 0])
+  ("GameEngine" .
+   [0 0 1 0 0 0 0 0 0 0])
+  ("HOME/.dotfiles/xmodmap/spacecadet.xmod" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("MODMAP" .
+   [1 0 1 0 0 0])
+  ("file," .
+   [0 0 1 0 0])))
