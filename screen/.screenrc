@@ -1,0 +1,15 @@
+term screen-256color
+
+bindkey ., command
+bindkey .,a meta
+
+defscrollback 2048 
+autodetach on
+startup_message off 
+vbell off 
+
+
+hardstatus alwayslastline
+hardstatus string '%{gk}[%{= kG} %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d%{W} %c %{g}]'
+
+
