@@ -60,4 +60,4 @@ export TERM="xterm-256color"
 
 PS1="\W>"
 
-screen -S core -x -R
+
