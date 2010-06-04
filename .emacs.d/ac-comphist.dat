@@ -1,0 +1,42 @@
+((("on_global_msg" .
+   [1 0 1 1 0 0 0 0 0 0 0 0 0])
+  ("ac-ropemacs-initialize" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("auto-complete" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("require" .
+   [1 0 0 0 0 0 0])
+  ("as" .
+   [1 0])
+  ("_register_listeners" .
+   [1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("EngineClass" .
+   [1 0 1 0 0 0 0 0 0 0 0])
+  ("IRCConsole" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("IRCBotFactory" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("__init__" .
+   [0 0 0 0 1 0 0 0])
+  ("import" .
+   [4 0 0 0 0 0])
+  ("path" .
+   [1 0 0 0])
+  ("random" .
+   [1 0 0 0 0 0])
+  ("load-library" .
+   [0 0 0 0 0 0 0 0 1 0 0 0])
+  ("open" .
+   [1 0 0 0])
+  ("self" .
+   [1 0 0 0])
+  ("wrap" .
+   [1 0 0 0])
+  ("ApplicationClass" .
+   [0 0 0 2 0 0 0 1 0 0 0 1 0 0 0 1])
+  ("class" .
+   [2 0 0 0 0])
+  ("ac-source-ropemacs" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("from" .
+   [3 0 0 0])))
