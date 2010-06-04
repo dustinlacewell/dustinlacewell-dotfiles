@@ -56,11 +56,6 @@ if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
 
-MODMAP="$HOME/.dotfiles/xmodmap/spacecadet.xmod"
-if [ -f $MODMAP ]; then
-    xmodmap $MODMAP
-fi
-
 export TERM="xterm-256color"
 
 PS1="\W>"
