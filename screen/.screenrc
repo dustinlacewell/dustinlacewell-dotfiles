@@ -1,7 +1,3 @@
-term screen-256color
-
-escape ^T^T
-
 bindkey ., command
 bindkey .,a meta
 
