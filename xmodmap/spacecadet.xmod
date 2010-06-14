@@ -4,9 +4,9 @@ clear Mod1
 
 keycode 66 = Caps_Lock
 keycode 64 = Control_L
-keycode 108 = Control_R
+keycode 108 = Alt_R
 keycode 133 = Alt_L
-keycode 134 = Alt_R
+keycode 134 = Control_L
 keycode 37 = Super_L
 keycode 135 = Super_R
 

@@ -1,11 +1,35 @@
-((("on_global_msg" .
+((("bin" .
+   [1 0 0])
+  ("x" .
+   [3])
+  ("xterm-mouse-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("C-S-insert" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("C" .
+   [1])
+  ("kbd" .
+   [2 0 0])
+  ("global-set-key" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("font-lock-comment-delimiter-face" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("white" .
+   [2 0 0 0 0])
+  ("yellow" .
+   [1 0 0 0 0 0])
+  ("green" .
+   [3 0 0 0 0])
+  ("awk-mode" .
+   [0 0 0 0 0 0 1 0])
+  ("on_global_msg" .
    [1 0 1 1 0 0 0 0 0 0 0 0 0])
   ("ac-ropemacs-initialize" .
    [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("auto-complete" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0])
   ("require" .
-   [1 0 0 0 0 0 0])
+   [2 0 0 0 0 0 0])
   ("as" .
    [1 0])
   ("_register_listeners" .
@@ -47,4 +71,46 @@
   ("MODMAP" .
    [1 0 1 0 0 0])
   ("file," .
-   [0 0 1 0 0])))
+   [0 0 1 0 0])
+  ("exit-language-environment-hook" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":weight" .
+   [2 0 0 0 0 0 0])
+  ("bold" .
+   [2 0 0 0])
+  ("black" .
+   [1 0 0 0 0])
+  ("font-lock-comment-face" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("color" .
+   [4 0 0 0 0])
+  ("min-colors" .
+   [3 0 0 0 0 0 1 0 0 0])
+  (":foreground" .
+   [3 0 0 0 0 0 0 0 0 0 1])
+  ("nil" .
+   [2 0 0])
+  ("newline" .
+   [1 0 0 0 0 0 0])
+  ("font-lock-constant-face" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("Python" .
+   [1 0 0 0 0 0])
+  ("font" .
+   [1 0 0 0])
+  ("faces" .
+   [3 0 0 0 0])
+  ("ECB" .
+   [1 0 0])
+  ("ecb-source-face" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("y" .
+   [1])
+  ("ecb-source-in-directories-buffer-face" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [2 0 0 0])
+  ("ecb-use-speedbar-instead-native-tree-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("tramp" .
+   [1 0 0 0 0])))

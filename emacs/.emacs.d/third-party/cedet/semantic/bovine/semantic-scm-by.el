@@ -3,7 +3,7 @@
 ;; Copyright (C) 2001, 2003, 2009 Eric M. Ludlam
 
 ;; Author: Dustin <ldlework@ldlework-desktop>
-;; Created: 2010-06-03 11:14:42-0500
+;; Created: 2010-06-08 10:02:22-0500
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 

@@ -3,7 +3,7 @@
 ;; Copyright (C) 2002, 2003, 2004, 2007 Richard Kim
 
 ;; Author: Dustin <ldlework@ldlework-desktop>
-;; Created: 2010-06-03 11:14:37-0500
+;; Created: 2010-06-08 10:02:11-0500
 ;; Keywords: syntax
 ;; X-RCS: $Id$
 
