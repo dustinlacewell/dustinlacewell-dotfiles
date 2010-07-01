@@ -1,0 +1,3 @@
+To install the xmonad settings here simply symlink this folder to ~/.xmonad :
+
+ln -s ~/.dotfiles/xmonad ~/.xmonad

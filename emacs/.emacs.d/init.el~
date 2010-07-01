@@ -20,12 +20,6 @@
 (require 'tramp)
 (setq tramp-default-method "scp")
 
-;; Codepad
-(autoload 'codepad-paste-region "codepad" "Paste region to codepad.org." t)
-(autoload 'codepad-paste-buffer "codepad" "Paste buffer to codepad.org." t)
-(autoload 'codepad-fetch-code "codepad" "Fetch code from codepad.org." t)
-
-
 (load-library "_autocomplete")
 (load-library "_cedet")
 (load-library "_ecb")
@@ -37,27 +31,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; basic setup
+;; basic setup                                                                                                                                                                                            
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;Buffer browsing
-(global-set-key (kbd "C-x C-j") 'previous-buffer)
-(global-set-key (kbd "C-x C-k") 'next-buffer)
-
 ;; Shorter confirmation prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "C-M-m") 'xterm-mouse-mode)
-
-;; Close all buffers
-(defun close-all-buffers ()
-  (interactive)
-  (mapc 'kill-buffer (buffer-list)))
-(global-set-key "\C-cx" 'close-all-buffers)
-
-
-;; Enable system CLIPBOARD
-;;(setq x-select-enable-clipboard t)
-;;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
 
 (custom-set-faces
@@ -84,11 +63,7 @@
  '(speedbar-file-face ((((class color) (background light)) (:foreground "cyan" :weight bold))))
  '(speedbar-selected-face ((((class color) (background light)) (:foreground "red"))))
  '(speedbar-tag-face ((((class color) (background light)) (:foreground "green"))))
- '(vertical-border ((((type tty)) (:foreground "black" :weight bold))))
- '(wl-highlight-summary-new-face ((((type tty) (background dark)) (:foreground "green"))))
- '(wl-highlight-summary-prefetch-face ((((type tty) (background dark)) (:foreground "red"))))
- '(wl-highlight-summary-thread-top-face ((((type tty) (background dark)) (:foreground "white"))))
- '(wl-highlight-summary-unread-face ((((type tty) (background dark)) (:foreground "black")))))
+ '(vertical-border ((((type tty)) (:foreground "black" :weight bold)))))
   
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -108,8 +83,5 @@
  '(line-number-mode 1)
  '(make-backup-files nil)
  '(scroll-step 1)
- '(speedbar-supported-extension-expressions (quote (".wy" ".by" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".f\\(90\\|77\\|or\\)?" ".ada" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".css" ".js")))
  '(standard-indent 4)
- '(tramp-default-user "ldlework")
- '(wl-insert-message-id nil))
-
+ '(tramp-default-user "ldlework"))
