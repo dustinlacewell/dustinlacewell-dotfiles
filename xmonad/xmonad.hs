@@ -52,29 +52,29 @@ myLogHook = fadeInactiveLogHook fadeAmount
     where fadeAmount = 0xaaaaaaaa
 
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-    [ ((controlMask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
-    , ((controlMask .|. shiftMask,               xK_p     ), spawn "gmrun")
-    , ((controlMask .|. shiftMask, xK_q     ), kill)
-    , ((modMask,               xK_space ), sendMessage NextLayout)
-    , ((modMask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
-    , ((modMask,               xK_j     ), windows W.focusDown)
-    , ((modMask,               xK_k     ), windows W.focusUp  )
-    , ((modMask,               xK_Return), windows W.swapMaster)
-    , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
-    , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
-    , ((modMask,               xK_h     ), sendMessage Shrink)
-    , ((modMask,               xK_l     ), sendMessage Expand)
-    , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
-    , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
-    , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
-    , ((modMask              , xK_q     ), restart "xmonad" True)
-    , ((modMask              , xK_i     ), sendMessage MirrorShrink)
-    , ((modMask              , xK_m     ), sendMessage MirrorExpand)
+    [ ((mod4Mask .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
+    , ((mod4Mask .|. shiftMask,               xK_p     ), spawn "gmrun")
+    , ((mod4Mask .|. shiftMask, xK_q     ), kill)
+    , ((mod4Mask,               xK_space ), sendMessage NextLayout)
+    , ((mod4Mask .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    , ((mod4Mask,               xK_j     ), windows W.focusDown)
+    , ((mod4Mask,               xK_k     ), windows W.focusUp  )
+    , ((mod4Mask,               xK_Return), windows W.swapMaster)
+    , ((mod4Mask .|. shiftMask, xK_j     ), windows W.swapDown  )
+    , ((mod4Mask .|. shiftMask, xK_k     ), windows W.swapUp    )
+    , ((mod4Mask,               xK_h     ), sendMessage Shrink)
+    , ((mod4Mask,               xK_l     ), sendMessage Expand)
+    , ((mod4Mask,               xK_t     ), withFocused $ windows . W.sink)
+    , ((mod4Mask              , xK_comma ), sendMessage (IncMasterN 1))
+    , ((mod4Mask              , xK_period), sendMessage (IncMasterN (-1)))
+    , ((mod4Mask              , xK_q     ), restart "xmonad" True)
+    , ((mod4Mask              , xK_i     ), sendMessage MirrorShrink)
+    , ((mod4Mask              , xK_m     ), sendMessage MirrorExpand)
     ]
     ++
-    [((m .|. shiftMask, k), windows $ f i)
+    [((m .|. mod4Mask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_a, xK_s, xK_d, xK_f, xK_g, xK_z, xK_x, xK_c, xK_v, xK_b]
-        , (f, m) <- [(W.greedyView, controlMask), (W.shift, modMask)]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
     ]
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $

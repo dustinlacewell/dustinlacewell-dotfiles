@@ -28,7 +28,7 @@
 
 (load-library "_autocomplete")
 (load-library "_cedet")
-(load-library "_ecb")
+;(load-library "_ecb")
 ;(load-library "_tab")
 (load-library "_ido")
 (load-library "_mail")

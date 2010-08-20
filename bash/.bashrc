@@ -58,4 +58,4 @@ fi
 
 PS1="\W>"
 
-
+export PATH=$PATH:/home/ldlework/mingw32/bin
