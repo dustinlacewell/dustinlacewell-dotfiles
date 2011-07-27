@@ -1,4 +1,10 @@
-To install these bash configurations simply symlink the files to your home directory:
+To install these bash configurations simply symlink the files to your home:
 
-   	   ln -s ~/.dotfiles/bash/.bashrc ~/.bashrc
-	   ln -s ~/.dotfiles/bash/.bash_aliases ~/.bash_aliases
+   cd bash
+   ln -s ./.bashrc ~/
+   ln -s ./.bash_aliases ~/
+
+Or simply execute the install-sh from within the bash/ directory:
+
+   cd bash
+   ./install-sh
