@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>History of PHP</title>
+
+ </head>
+ <body><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="history.html">History of PHP and related projects</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="history.php.related.html">History of PHP related projects</a></div>
+ <div class="up"><a href="history.html">History of PHP and related projects</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div><hr /><div id="history.php" class="sect1">
+  <h2 class="title">History of PHP</h2>
+  
+  <div class="sect2" id="history.phpfi">
+   <h3 class="title">PHP/FI</h3>
+   <p class="para">
+    PHP succeeds an older product, named PHP/FI. PHP/FI was
+    created by Rasmus Lerdorf in 1995, initially as a simple
+    set of Perl scripts for tracking accesses to his online
+    resume. He named this set of scripts &#039;Personal Home Page
+    Tools&#039;. As more functionality was required, Rasmus wrote
+    a much larger C implementation, which was able to
+    communicate with databases, and enabled users to develop
+    simple dynamic Web applications. Rasmus chose to 
+    <a href="http://groups.google.com/group/comp.infosystems.www.authoring.cgi/msg/cc7d43454d64d133" class="link external">&raquo;&nbsp;release</a>
+    the source code for PHP/FI for everybody to see, so that
+    anybody can use it, as well as fix bugs in it and improve
+    the code.
+   </p>
+   <p class="para">
+    PHP/FI, which stood for Personal Home Page / Forms Interpreter,
+    included some of the basic functionality of PHP as we know
+    it today. It had Perl-like variables, automatic interpretation
+    of form variables and HTML embedded syntax. The syntax itself
+    was similar to that of Perl, albeit much more limited, simple,
+    and somewhat inconsistent.
+   </p>
+   <p class="para">
+    By 1997, PHP/FI 2.0, the second write-up of the C implementation,
+    had a cult of several thousand users around the world
+    (estimated), with approximately 50,000 domains reporting as
+    having it installed, accounting for about 1% of the domains
+    on the Internet. While there were several people contributing
+    bits of code to this project, it was still at large a one-man
+    project.
+   </p>
+   <p class="para">
+    PHP/FI 2.0 was officially released only in November 1997, after
+    spending most of its life in beta releases. It was shortly
+    afterwards succeeded by the first alphas of PHP 3.0.
+   </p>
+   <p class="para">
+    <div class="example" id="example-4780">
+     <p><b>Example #1 Example PHP/FI Code</b></p>
+     <div class="example-contents">
+<div class="htmlcode"><pre class="htmlcode">&lt;!--include /text/header.html--&gt;
+
+&lt;!--getenv HTTP_USER_AGENT--&gt;
+&lt;!--ifsubstr $exec_result Mozilla--&gt;
+  Hey, you are using Netscape!&lt;p&gt;
+&lt;!--endif--&gt;
+
+&lt;!--sql database select * from table where user=&#039;$username&#039;--&gt;
+&lt;!--ifless $numentries 1--&gt;
+  Sorry, that record does not exist&lt;p&gt;
+&lt;!--endif exit--&gt;
+  Welcome &lt;!--$user--&gt;!&lt;p&gt;
+  You have &lt;!--$index:0--&gt; credits left in your account.&lt;p&gt;
+
+&lt;!--include /text/footer.html--&gt;</pre>
+</div>
+     </div>
+
+    </div>
+   </p>
+  </div>
+
+  <div class="sect2" id="history.php3">
+   <h3 class="title">PHP 3</h3>
+   <p class="para">
+    PHP 3.0 was the first version that closely resembles PHP as
+    we know it today. It was created by Andi Gutmans and Zeev
+    Suraski in 1997 as a complete rewrite, after they found
+    PHP/FI 2.0 severely underpowered for developing an eCommerce
+    application they were working on for a University project.
+    In an effort to cooperate and start building upon PHP/FI&#039;s
+    existing user-base, Andi, Rasmus and Zeev decided to cooperate
+    and announce PHP 3.0 as the official successor of PHP/FI 2.0,
+    and development of PHP/FI 2.0 was mostly halted.
+   </p>
+   <p class="para">
+    One of the biggest strengths of PHP 3.0 was its strong
+    extensibility features. In addition to providing end users
+    with a solid infrastructure for lots of different databases,
+    protocols and APIs, PHP 3.0&#039;s extensibility features attracted
+    dozens of developers to join in and submit new extension
+    modules. Arguably, this was the key to PHP 3.0&#039;s tremendous
+    success. Other key features introduced in PHP 3.0 were the
+    object oriented syntax support and the much more powerful
+    and consistent language syntax.
+   </p>
+   <p class="para">
+    The whole new language was released under a new name, that
+    removed the implication of limited personal use that the
+    PHP/FI 2.0 name held. It was named plain &#039;PHP&#039;, with the
+    meaning being a recursive acronym - PHP: Hypertext Preprocessor.
+   </p>
+   <p class="para">
+    By the end of 1998, PHP grew to an install base of tens of
+    thousands of users (estimated) and hundreds of thousands of
+    Web sites reporting it installed. At its peak, PHP 3.0 was
+    installed on approximately 10% of the Web servers on the
+    Internet.
+   </p>
+   <p class="para">
+    PHP 3.0 was officially released in June 1998, after having
+    spent about 9 months in public testing.
+   </p>
+  </div>
+
+  <div class="sect2" id="history.php4">
+   <h3 class="title">PHP 4</h3>
+   <p class="para">
+    By the winter of 1998, shortly after PHP 3.0 was officially
+    released, Andi Gutmans and Zeev Suraski had begun working
+    on a rewrite of PHP&#039;s core. The design goals were to improve
+    performance of complex applications, and improve the
+    modularity of PHP&#039;s code base. Such applications were made
+    possible by PHP 3.0&#039;s new features and support for a wide
+    variety of third party databases and APIs, but PHP 3.0 was
+    not designed to handle such complex applications efficiently.
+   </p>
+   <p class="para">
+    The new engine, dubbed &#039;Zend Engine&#039; (comprised of their
+    first names, Zeev and Andi), met these design goals
+    successfully, and was first introduced in mid 1999. PHP 4.0,
+    based on this engine, and coupled with a wide range of
+    additional new features, was officially released in May
+    2000, almost two years after its predecessor, PHP 3.0.
+    In addition to the highly improved performance of this
+    version, PHP 4.0 included other key features such as
+    support for many more Web servers, HTTP sessions, output
+    buffering, more secure ways of handling user input and
+    several new language constructs.
+   </p>
+   <p class="para">
+    Today, PHP is being used by hundreds of thousands of developers
+    (estimated), and several million sites report as having it
+    installed, which accounts for over 20% of the domains on the
+    Internet.
+   </p>
+   <p class="para">
+    PHP&#039;s development team includes dozens of developers, as well
+    as dozens others working on PHP-related projects such as PEAR
+    and the documentation project.
+   </p>
+  </div>
+
+  <div class="sect2" id="history.php5">
+   <h3 class="title">PHP 5</h3>
+   <p class="para">
+    PHP 5 was released in July 2004 after long development and several
+    pre-releases. It is mainly driven by its core, the
+    <i>Zend Engine 2.0</i> with a
+    new object model and dozens of other new features.
+   </p>
+  </div>
+ </div><hr /><div class="manualnavbar" style="text-align: center;">
+ <div class="prev" style="text-align: left; float: left;"><a href="history.html">History of PHP and related projects</a></div>
+ <div class="next" style="text-align: right; float: right;"><a href="history.php.related.html">History of PHP related projects</a></div>
+ <div class="up"><a href="history.html">History of PHP and related projects</a></div>
+ <div class="home"><a href="index.html">PHP Manual</a></div>
+</div></body></html>
