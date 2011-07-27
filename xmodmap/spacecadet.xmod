@@ -1,16 +1,10 @@
-clear Lock
-clear Control
 clear Mod1
+clear Control
+clear Mod2
 
-keycode 66 = Caps_Lock
-keycode 64 = Control_L
-keycode 108 = Alt_R
-keycode 133 = Alt_L
-keycode 134 = Control_R
-keycode 37 = Super_L
-keycode 135 = Super_R
+keycode 64 = Control_L Control_L Control_L Control_L
+keycode 37 = Alt_L Alt_L Alt_L Alt_L
+keycode 108 = Alt_R Alt_R Alt_R Alt_R
 
-add Control = Caps_Lock
-add Control = Control_L
-add Control = Control_R
-
+add Mod1 = Alt_L Alt_R
+add Control = Control_L Control_R
