@@ -18,7 +18,7 @@ import XMonad.Hooks.ManageDocks
 
 
 main = do
-       xmonad $ withUrgencyHook StdoutUrgencyHook $ gnomeConfig
+       xmonad $ withUrgencyHook StdoutUrgencyHook $ ewmh gnomeConfig
             { borderWidth = 1
             , normalBorderColor = "#202020"
             , focusedBorderColor = "#663333"
@@ -34,7 +34,7 @@ main = do
 myLayoutHook = desktopLayoutModifiers $ tiled ||| Mirror tiled ||| Full
   where tiled = ResizableTall 1 (3/100) (1/2) []
 
-desktopLayoutModifiers layout = avoidStruts $ ewmhDesktopsLayout layout
+desktopLayoutModifiers layout = avoidStruts layout
 
 myXmoLogHook :: Handle ->  X ()
 myXmoLogHook h = dynamicLogWithPP $ customPP { ppOutput = hPutStrLn h }
