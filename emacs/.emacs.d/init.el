@@ -11,15 +11,15 @@
        (normal-top-level-add-subdirs-to-load-path))
 
 ;; customizations or third-party loading 
-(load-library "autocomplete")
-(load-library "buffers")
-(load-library "browser")
-(load-library "ido")
-(load-library "org")
-(load-library "php")
-(load-library "git")
-(load-library "yaml")
-(load-library "python")
+(load-library "_autocomplete")
+(load-library "_buffers")
+(load-library "_browser")
+(load-library "_ido")
+(load-library "_org")
+(load-library "_php")
+(load-library "_git")
+(load-library "_yaml")
+(load-library "_python")
 
 ;; * do not edit below this line -----------------------------------------------
 (custom-set-faces
