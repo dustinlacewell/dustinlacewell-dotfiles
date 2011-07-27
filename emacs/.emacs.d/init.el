@@ -1,15 +1,16 @@
-;; Library Paths
-;; Note: keep every emacs library underneath ~/.emacs.d 
+;; library paths
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "/usr/share/emacs23/site-lisp/")
 (add-to-list 'load-path "/usr/share/emacs23/site-lisp/yaml-mode/")
+;; load every emacs library underneath ~/.emacs.d 
 (progn (cd "~/.emacs.d")
        (normal-top-level-add-subdirs-to-load-path))
-;keep third party libraries seperate in ~/.emacs.d/third-party
+;; load every emacs library underneath ~/.emacs.d/third-party
 (add-to-list 'load-path "~/.emacs.d/third-party")
 (progn (cd "~/.emacs.d/third-party")
        (normal-top-level-add-subdirs-to-load-path))
 
+;; customizations or third-party loading 
 (load-library "autocomplete")
 (load-library "buffers")
 (load-library "browser")
@@ -20,7 +21,7 @@
 (load-library "yaml")
 (load-library "python")
 
-
+;; * do not edit below this line -----------------------------------------------
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
