@@ -1,0 +1,10 @@
+To install these xmodmap configurations simply symlink the files to your home:
+
+   cd xmodmap
+   ln -s ./spacecadet.xmod ~/.Xmodmap
+   xmodmap ~/.Xmodmap
+
+Or simply execute the install-sh from within the xmodmap/ directory:
+
+   cd xmodmap
+   ./install-sh
