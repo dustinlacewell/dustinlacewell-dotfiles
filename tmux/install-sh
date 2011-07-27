@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ln -sf ./.tmux.conf ~/
+

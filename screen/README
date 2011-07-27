@@ -1,3 +1,0 @@
-To install this screen configuration simply symlink .screenrc to ~/.screenrc
-
-   	   ln -s ~/.dotfiles/screen/.screenrc ~/.screenrc

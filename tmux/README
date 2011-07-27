@@ -1,0 +1,9 @@
+To install these bash configurations simply symlink the files to your home:
+
+   cd tmux
+   ln -s ./.tmux.conf ~/
+
+Or simply execute the install-sh from within the bash/ directory:
+
+   cd tmux
+   ./install-sh
