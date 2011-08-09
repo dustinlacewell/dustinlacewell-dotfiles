@@ -110,3 +110,6 @@ if [ -f ~/.pinconf ]; then
     . pin.sh
 fi
 
+if [ -f ~/.pinconf ]; then
+    . ~/.bash_local
+fi
