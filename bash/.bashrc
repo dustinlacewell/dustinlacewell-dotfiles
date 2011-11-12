@@ -95,6 +95,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+[ -n "$TMUX" ] && export TERM=xterm
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -102,14 +104,17 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f ~/.capnhooks ]; then
+if [ -d ~/.capnhooks ]; then
     . capn
 fi
 
-if [ -f ~/.pinconf ]; then
+if [ -d ~/.pinconf ]; then
     . pin.sh
 fi
 
-if [ -f ~/.pinconf ]; then
+if [ -d ~/.pinconf ]; then
     . ~/.bash_local
 fi
+
+# My prompt
+PS1='\u@\h:\W$(__git_ps1 "(%s)")$ '

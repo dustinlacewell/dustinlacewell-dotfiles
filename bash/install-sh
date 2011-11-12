@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ln -sf dev/mine/dustinlacewell-dotfiles/bash/.bash_aliases ~/
-ln -sf dev/mine/dustinlacewell-dotfiles/bash/.bashrc ~/
+ln -sf ./.bash_aliases ~/
+ln -sf ./.bashrc ~/

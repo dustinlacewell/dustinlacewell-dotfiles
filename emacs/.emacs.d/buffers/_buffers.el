@@ -31,6 +31,14 @@
 (global-set-key "\M-V" (lambda () (interactive) (scroll-down-in-place 6))  )
 (global-set-key "\C-\M-V" (lambda () (interactive) (scroll-up-in-place 6))  )
 
+;; fill-column-indicator
+(require 'fill-column-indicator)
+(add-hook 'python-mode-hook 'fci-mode)
+(add-hook 'org-mode-hook 'fci-mode)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+  (global-fci-mode 1)
+
+
 ;; search-all-buffers : F7
 (defcustom search-all-buffers-ignored-files (list (rx-to-string '(and bos (or ".bash_history" "TAGS") eos)))
   "Files to ignore when searching buffers via \\[search-all-buffers]."
@@ -66,3 +74,11 @@ searches all buffers."
 (defalias 'ack-same 'ack-and-a-half-same)
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+
+;; themes
+;; (add-to-list 'load-path "/usr/share/emacs23/site-lisp/emacs-goodies-el")
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-hober)))

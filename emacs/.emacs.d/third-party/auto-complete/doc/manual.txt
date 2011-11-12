@@ -1,4 +1,4 @@
-Title: Auto Complete Mode User Manual
+Title: Auto Complete Mode - User Manual
 Numbering: yes
 CSS: style.css
 
@@ -28,6 +28,11 @@ This user manual covers from how to install and how to use to how to extend. Ple
 
 Auto Complete Mode is licensed under the term of [GPLv3][]. And this document is licensed under the term of [GFDL][].
 
+Downloads
+---------
+
+You can download from [Auto Complete Mode top page](index.txt).
+
 Installation
 ------------
 
@@ -41,11 +46,21 @@ Installation
 
 It is easy to install by using a installation script called `etc/install.el` that is located in the package directory.
 
-Type `M-x load-file RET` in the running Emacs or newly launched Emacs. Then input a file name to load which is a path string with adding `/etc/install.el` to the package directory. For example, if the package directory is `~/tmp/auto-complete-1.2`, the file name will be `~/tmp/auto-complete-1.2/etc/install.el`.
+Type `M-x load-file RET` in the running Emacs or newly launched Emacs. Note that if you want to upgrade `auto-complete-mode`, you have to install in **a newly launched Emacs with `-q` option**. Then input a file name to load which is a path string with adding `/etc/install.el` to the package directory. For example, if the package directory is `~/tmp/auto-complete-1.2`, the file name will be `~/tmp/auto-complete-1.2/etc/install.el`.
 
 Then input a directory where Auto Complete will be installed. You need to add a directory to `load-path` later if `load-path` doesn't include the directory. The directory is to be `~/.emacs.d` by default.
 
 Finally type `RET` to start installation. After installation, you may see the following buffer and follow instructions to edit `.emacs`.
+
+You can also install from terminal like:
+
+    $ make install
+    $ # or with directory specified
+    $ make install DIR=$HOME/.emacs.d/
+
+If you don't have GNU Make, run emacs like:
+
+    $ emacs -batch -l etc/install.el
 
 **Example message after installation (\*Installation Result* Buffer)**
 
@@ -54,8 +69,8 @@ Finally type `RET` to start installation. After installation, you may see the fo
     Add the following code to your .emacs:
     
     (add-to-list 'load-path "~/.emacs.d")    ; This may not be appeared if you have already added.
-    (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
     (require 'auto-complete-config)
+    (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
     (ac-config-default)
 
 ### Manual Installation ###
@@ -187,7 +202,7 @@ So, as of `auto-complete` command, it is a little different from an original aut
 
 * Otherwise
 
-  Otherwise start completion with showing completion menu.
+  Otherwise start completion with/without expanding a whole common part and showing completion menu. See also [`ac-show-menu-immediately-on-auto-complete`](#) and [`ac-expand-on-auto-complete`](#).
 
 ### Completion by Fuzzy Matching ###
 
@@ -207,7 +222,7 @@ It is difficult what key `auto-complete` command is bound to. It should be bound
 
     (ac-set-trigger-key "TAB")
 
-Trigger key will be enabled after inserting characters. Otherwise it is dealt as an usual command (TAB will be indent). Generally, trigger key is used with `auto-auto-start` being `nil`.
+Trigger key will be enabled after inserting characters. Otherwise it is dealt as an usual command (TAB will be indent). Generally, trigger key is used with `ac-auto-start` being `nil`.
 
     (setq ac-auto-start nil)
 
@@ -326,6 +341,10 @@ Here are defined sources in `auto-complete.el` and `auto-complete-config.el`.
 
 A source for Emacs abbreviation function. See `info emacs Abbrevs` about abbreviation function.
 
+#### `ac-source-css-property` ####
+
+A source for CSS property.
+
 #### `ac-source-dictionary` ####
 
 A source for dictionary. See [completion by dictionary](#Completion_by_Dictionary) about dictionary.
@@ -350,6 +369,10 @@ A source for completing files in a current directory. It may be useful with `esh
 
 A source for completing Emacs Lisp functions. It is available only after `(`.
 
+#### `ac-source-ghc-mod` ####
+
+A source for [ghc-mod](http://www.mew.org/~kazu/proj/ghc-mod/en/).
+
 #### `ac-source-gtags` ####
 
 A source for completing tags of [Global](http://www.tamacom.com/global.html).
@@ -361,6 +384,14 @@ A source for completing `imenu` nodes. See `info emacs imenu` for details.
 #### `ac-source-semantic` ####
 
 A source for [Semantic](http://cedet.sourceforge.net/semantic.shtml). It can be used for completing member name for C/C++.
+
+#### `ac-source-slime` ####
+
+A source for [SLIME](http://common-lisp.net/project/slime/).
+
+#### `ac-source-semantic-raw` ####
+
+Unlike `ac-source-semantic`, this source is for completing symbols in a raw namespace.
 
 #### `ac-source-symbols` ####
 
@@ -443,6 +474,23 @@ As we described above, there is many behaviors in TAB. You need to use TAB and R
     (define-key ac-completing-map "\t" 'ac-complete)
     (define-key ac-completing-map "\r" nil)
 
+### Select candidates with C-n/C-p only when completion menu is displayed ###
+
+By evaluating the following code, you can select candidates with C-n/C-p, but it might be annoying sometimes.
+
+    ;; Bad config
+    (define-key ac-completing-map "\C-n" 'ac-next)
+    (define-key ac-completing-map "\C-p" 'ac-previous)
+
+In this case, it is better that selecting candidates is enabled only when completion menu is displayed so that the key input will not be taken as much as possible. `ac-menu-map` is a keymap for completion on completion menu which is enabled when `ac-use-menu-map` is `t`.
+
+    (setq ac-use-menu-map t)
+    ;; Default settings
+    (define-key ac-menu-map "\C-n" 'ac-next)
+    (define-key ac-menu-map "\C-p" 'ac-previous)
+
+See [`ac-use-menu-map`](#) and [`ac-menu-map`](#) for more details.
+
 ### Not to use quick help ###
 
 A tooltip help that is shown when completing is called quick help. You can disable it if you don't want to use it:
@@ -477,14 +525,14 @@ Default is `smart`.
 
 ### Stop completion automatically after inserting specific words ###
 
-Set `ac-ignores` to words that stops completion automatically. In ruby, some people want to stop completion automatically after inserting "end":
+Set `ac-stop-words` to words that stops completion automatically. In ruby, some people want to stop completion automatically after inserting "end":
 
     (add-hook 'ruby-mode-hook
               (lambda ()
-                (make-local-variable 'ac-ignores)
-                (add-to-list 'ac-ignores "end")))
+                (make-local-variable 'ac-stop-words)
+                (add-to-list 'ac-stop-words "end")))
 
-Note that `ac-ignores` is not a buffer local variable, so you need to make it buffer local with `make-local-variable` if it is buffer specific setting.
+Note that `ac-stop-words` is not a buffer local variable, so you need to make it buffer local with `make-local-variable` if it is buffer specific setting.
 
 ### Change colors ###
 
@@ -515,6 +563,57 @@ For example, you may want to use specific sources for C++ buffers. To do that, r
 
     (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
 
+### Completion with specific source ###
+
+You can start completion with specific source. For example, if you want to complete file name, do `M-x ac-complete-filename` at point. Or if you want to complete C/C++ member name, do `M-x ac-complete-semantic` at point. Usually, you may bind them to some key like:
+
+    ;; Complete member name by C-c . for C++ mode.
+    (add-hook 'c++-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-c .") 'ac-complete-semantic)))
+    ;; Complete file name by C-c /
+    (global-set-key (kbd "C-c /") 'ac-complete-filename)
+
+Generally, such commands will be automatically available when sources are defined. Assume that a source named `ac-source-foobar` is being defined for example, a command called `ac-complete-foobar` will be also defined automatically. See also [builtin sources](#Builtin_Sources) for available commands.
+
+If you want to use multiple sources for a command, you need to define a command for it like:
+
+    (defun semantic-and-gtags-complete ()
+      (interactive)
+      (auto-complete '(ac-source-semantic ac-source-gtags)))
+
+`auto-complete` function can take an alternative of `ac-sources`.
+
+### Show help persistently ###
+
+Use `ac-persist-help` instead of `ac-help`, which is bound to `M-<f1>` and `C-M-?`.
+
+### Show a lastly completed candidate help ###
+
+`ac-last-help` command shows a lastly completed candidate help in a `ac-help` (buffer help) form. If you give an argument by `C-u` or just call `ac-last-persist-help`, its help buffer will not disappear automatically.
+
+`ac-last-quick-help` command show a lastly completed candidate help in a `ac-quick-help` (quick help) form. It is useful if you want to see a function documentation, for example.
+
+You may bind keys to these command like:
+
+    (define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
+    (define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
+
+### Show help beautifully ###
+
+If [pos-tip.el](http://www.emacswiki.org/emacs-en/PosTip) is installed, `auto-complete-mode` uses its native rendering engine for displaying quick help instead of legacy one.
+
+Third-party Extensions
+----------------------
+
+### SLIME ###
+
+See [ac-slime](https://github.com/purcell/ac-slime) page.
+
+### Scala ###
+
+See [ENSIME](https://github.com/aemoncannon/ensime) page.
+
 Configuration
 -------------
 
@@ -527,6 +626,22 @@ Delay time to start completion in real number seconds. It is a trade off of resp
 ### `ac-auto-show-menu` ###
 
 Show completion menu automatically if `t` specified. `t` means always automatically showing completion menu. `nil` means never showing completion menu. Real number means delay time in seconds.
+
+### `ac-show-menu-immediately-on-auto-complete` ###
+
+Whether or not to show completion menu immediately on `auto-complete` command. If inline completion has already been showed, this configuration will be ignored.
+
+### `ac-expand-on-auto-complete` ###
+
+Whether or not to expand a common part of whole candidates.
+
+### `ac-disable-faces` ###
+
+Specify a list of face symbols for disabling auto completion. Auto completion will not be started if a face text property at a point is included in the list.
+
+### `ac-stop-flymake-on-completing` ###
+
+Whether or not to stop Flymake on completion.
 
 ### `ac-use-fuzzy` ###
 
@@ -564,6 +679,10 @@ Specify an integer of lines of completion menu.
 
 Specify an integer of lines of quick help.
 
+### `ac-quick-help-prefer-pos-tip` ###
+
+Whether or not auto-complete prefers native tooltip with pos-tip than overlap popup for displaying quick help. If non-nil, you also need to install [pos-tip.el](http://www.emacswiki.org/emacs/PosTip) so that displaying tooltip can work well.
+
 ### `ac-candidate-limit` ###
 
 Limit a number of candidates. Specifying an integer, the value will be a limit of candidates. `nil` means no limit.
@@ -575,6 +694,10 @@ Specify major modes as a list of symbols that will be enabled automatically if `
 ### `ac-compatible-packages-regexp` ###
 
 Specify a regexp that identifies starting completion or not for that package.
+
+### `ac-non-trigger-commands` ###
+
+Specify commands as a list of symbols that does NOT starts completion automatically.
 
 ### `ac-trigger-commands` ###
 
@@ -592,9 +715,13 @@ Specify a [trigger key](#Trigger_Key).
 
 Specify how completion will be started. `t` means always starting completion automatically. `nil` means never started automatically. An integer means completion will not be started until the value is more than a length of the completion target string.
 
-### `ac-ignores` ###
+### `ac-stop-words` ###
 
 Specify a list of strings that stops completion.
+
+### `ac-use-dictionary-as-stop-words` ###
+
+Specify whether auto-complete uses dictionaries as stop words.
 
 ### `ac-ignore-case` ###
 
@@ -606,6 +733,14 @@ Specify how distinguish case. `t` means always ignoring case. `nil` means never 
 
 * After selecting candidates, TAB will behave as RET
 * TAB will behave as RET only on candidate remains
+
+### `ac-use-menu-map` ###
+
+Specify a special keymap (`ac-menu-map`) should be enabled when completion menu is displayed. `ac-menu-map` will be enabled when it is `t` and satisfy one of the following conditions:
+
+* `ac-auto-start` and `ac-auto-show-menu` are not `nil`, and completion menu is displayed after starting completion
+* Completion menu is displayed by `auto-complete` command
+* Completion menu is displayed by `ac-isearch` command
 
 ### `ac-use-overriding-local-map` ###
 
@@ -645,11 +780,15 @@ Specify sources as a list of [source](#Source). This is a buffer local variable.
 
 ### `ac-completing-map` ###
 
-Key map on completing.
+Keymap for completion.
+
+### `ac-menu-map` ###
+
+Keymap for completion on completion menu. See also [`ac-use-menu-map`](#).
 
 ### `ac-mode-map` ###
 
-Key map for `auto-complete-mode` enabled buffers.
+Keymap for `auto-complete-mode` enabled buffers.
 
 Extend
 ------
@@ -796,7 +935,7 @@ This expression will be expanded like:
       (interactive)
       (auto-complete '(ac-source-mysource3)))
 
-A source will be defined as usual and in addition a command that completes with the source will be defined. Calling `auto-complete` without arguments will use `ac-sources` as default sources and with arguments will use the arguments as default sources. Considering compatibility, it is difficult to answer which you should use `defvar` and `ac-define-source`. Builtin sources are defined with `ac-define-sources`, so you can use them alone by binding some key to these commands such like `ac-complete-filename`.
+A source will be defined as usual and in addition a command that completes with the source will be defined. Calling `auto-complete` without arguments will use `ac-sources` as default sources and with arguments will use the arguments as default sources. Considering compatibility, it is difficult to answer which you should use `defvar` and `ac-define-source`. Builtin sources are defined with `ac-define-sources`, so you can use them alone by binding some key to these commands such like `ac-complete-filename`. See also [this tips](#Completion_with_specific_source].
 
 ### Source Properties ###
 
@@ -837,6 +976,10 @@ Specify a symbol of candidate meaning in one character string. The symbol will b
 | a      | Abbreviation     |
 | d      | Dictionary       |
 
+#### `summary` ####
+
+Specify a summary of candidate in string. It should be used for summarizing the candidate in short string.
+
 #### `cache` ####
 
 Use [cache](#).
@@ -852,6 +995,18 @@ Specify a face of candidate. It overrides [`ac-candidate-face`](#) partially.
 #### `selection-face` ####
 
 Specify a face of selection. It overrides [`ac-selection-face`](#) partially.
+
+#### `depends` ####
+
+Specify a list of features (which are `require`d) that the source is depending.
+
+#### `available` ####
+
+Specify a function or an expression that describe the source is available or not.
+
+#### `document` ####
+
+Specify a function or an expression that returns documentation of the candidate.
 
 ### Variables ###
 
@@ -922,6 +1077,26 @@ We don't good answers now, but you may shot the troubles by changing font size w
 
     (set-face-font 'ac-candidate-face "MS Gothic 11")
     (set-face-font 'ac-selection-face "MS Gothic 11")
+
+Known Bugs
+----------
+
+### Auto completion will not be started in a buffer `flyspell-mode` enabled ### {#flyspell-mode-bug}
+
+A way of delaying processes of `flyspell-mode` disables auto completion. You can avoid this problem by `M-x ac-flyspell-workaround`. You can write the following code into your `~/.emacs`.
+
+    (ac-flyspell-workaround)
+
+### `linum-mode` tries to display the line numbers even for the comletion menu ### {#linum-mode-bug}
+
+linum-mode tries to add the line numbers even for the comletion menu. To stop that annoying behavior, do `M-x ac-linum-workaround` or add the following code into your `~/.emacs`.
+
+    (ac-linum-workaround)
+
+Reporting Bugs
+--------------
+
+Visit [Auto Complete Mode Bug Tracking System](http://cx4a.org/redmine/projects/auto-complete-mode) and create a new ticket.
 
 [GNU Emacs]: http://www.gnu.org/software/emacs/
 [GPLv3]: http://gplv3.fsf.org/
