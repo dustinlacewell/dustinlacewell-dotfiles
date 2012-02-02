@@ -118,3 +118,7 @@ fi
 
 # My prompt
 PS1='\u@\h:\W$(__git_ps1 "(%s)")$ '
+
+export TERM="xterm"
+export PATH=/opt/apache-maven-3.0.3/bin:$PATH
+export GHORG_SITE=~/dev/mine/ldlework.com.src/

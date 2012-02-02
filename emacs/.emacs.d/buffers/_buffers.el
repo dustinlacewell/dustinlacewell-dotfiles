@@ -6,6 +6,8 @@
 (global-set-key (kbd "C-M-m") 'xterm-mouse-mode)
 
 ;; buffer browsing : C-x C-[jk]
+(global-set-key (kbd "C-n") 'next-logical-line)
+(global-set-key (kbd "C-p") 'previous-logical-line)
 (global-set-key (kbd "C-x C-j") 'previous-buffer)
 (global-set-key (kbd "C-x C-k") 'next-buffer)
 
@@ -31,12 +33,13 @@
 (global-set-key "\M-V" (lambda () (interactive) (scroll-down-in-place 6))  )
 (global-set-key "\C-\M-V" (lambda () (interactive) (scroll-up-in-place 6))  )
 
-;; fill-column-indicator
-(require 'fill-column-indicator)
-(add-hook 'python-mode-hook 'fci-mode)
-(add-hook 'org-mode-hook 'fci-mode)
-(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-  (global-fci-mode 1)
+;; minimap.el
+(when (display-graphic-p)
+  (require 'minimap)
+  ;; enable minimap
+  (global-set-key (kbd "C-c m") 'minimap-toggle))
+
+
 
 
 ;; search-all-buffers : F7
@@ -51,7 +54,7 @@ prefix > 1 (i.e., if you type C-u \\[search-all-buffers]),
 searches all buffers."
   (interactive (list (grep-read-regexp)
                      current-prefix-arg))
-  (message "Regexp is %s; prefix is %s" regexp prefix)
+ (message "Regexp is %s; prefix is %s" regexp prefix)
   (multi-occur
    (if (member prefix '(4 (4)))
        (buffer-list)

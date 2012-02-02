@@ -19,6 +19,7 @@
   ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#202324" :foreground "#c0c0c0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(ac-completion-face ((t (:foreground "lightblue" :underline t))))
+ '(bold ((t (:foreground "orange" :weight bold))))
  '(button ((((supports :underline t)) (:background "#363636" :underline t))))
  '(column-marker-1 ((t (:background "black" :foreground "black"))))
  '(cursor ((t (:background "#06989A"))))
@@ -47,6 +48,7 @@
  '(nobreak-space ((((class color) (min-colors 8)) nil)))
  '(org-date ((((class color) (background dark)) (:inherit link))))
  '(org-document-title ((((class color) (background dark)) (:foreground "white" :weight bold :height 1.44 :family "MonteCarlo-10"))))
+ '(org-link ((t (:inherit link :underline t))))
  '(region ((t (:background "#384F6C" :foreground "white"))))
  '(speedbar-button-face ((((class color) (background light)) (:foreground "white"))))
  '(speedbar-directory-face ((((class color) (background light)) (:foreground "white"))))
@@ -79,14 +81,15 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-echo-area-message t)
  '(inhibit-startup-screen t)
+ '(line-move-visual t)
  '(line-number-mode 1)
  '(make-backup-files nil)
  '(minimap-always-recenter nil)
  '(minimap-dedicated-window t)
  '(minimap-hide-fringes t)
  '(minimap-hide-scroll-bar t)
- '(minimap-recenter-type (quote free))
  '(minimap-update-delay 0.0)
+ '(org-return-follows-link t)
  '(scroll-step 1)
  '(speedbar-show-unknown-files t)
  '(speedbar-supported-extension-expressions (quote (".php" ".wy" ".by" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".f\\(90\\|77\\|or\\)?" ".ada" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?" ".css" ".js")))
@@ -99,19 +102,15 @@
  '(xterm-mouse-mode t))
 
 
-;; X emacs specific settings
 (when (display-graphic-p)
   ;; favorite font
-  (set-face-attribute 'default nil :font "tamsyn-15")
-  (require 'minimap)
-  ;; enable minimap
-  (global-set-key (kbd "C-c m") 'minimap-create)
-  (global-set-key (kbd "C-c RET") 'minimap-kill))
+  (set-face-attribute 'default nil :font "tamsyn-15"))
 
 ;; clipboard integration
 (load-file "~/.emacs.d/third-party/xclip.el")
 
 ;; topical customizations
+(load-library "_python")
 (load-library "_autocomplete")
 (load-library "_buffers")
 (load-library "_browser")
@@ -121,7 +120,6 @@
 (load-library "_php")
 (load-library "_git")
 (load-library "_yaml")
-(load-library "_python")
 (load-library "_lua")
 
 
@@ -129,3 +127,4 @@
 
 
 
+(put 'scroll-left 'disabled nil)
