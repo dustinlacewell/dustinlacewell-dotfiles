@@ -121,4 +121,12 @@ PS1='\u@\h:\W$(__git_ps1 "(%s)")$ '
 
 export TERM="xterm"
 export PATH=/opt/apache-maven-3.0.3/bin:$PATH
+export PATH=/home/dlacewell/Install/android-sdk-linux/tools:$PATH
+export PATH=/home/dlacewell/Install/android-sdk-linux/platform-tools:$PATH
+export PATH=/home/dlacewell/Install/python-for-android/dist/default:$PATH
 export GHORG_SITE=~/dev/mine/ldlework.com.src/
+export ANDROIDSDK="/home/dlacewell/Install/android-sdk-linux"
+export ANDROIDNDK="/home/dlacewell/Install/android-ndk-r7b"
+export ANDROIDNDKVER=r7
+export ANDROIDAPI=14
+

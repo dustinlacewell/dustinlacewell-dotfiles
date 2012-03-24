@@ -11,6 +11,9 @@
 (global-set-key (kbd "C-x C-j") 'previous-buffer)
 (global-set-key (kbd "C-x C-k") 'next-buffer)
 
+;; global calculate org-tables
+(add-hook 'org-mode-hook (lambda () (local-set-key (kbd "C-c r") 'org-table-iterate-buffer-tables)))
+
 ;; close all buffers : C-cx
 (defun close-all-buffers ()
   (interactive)

@@ -1,0 +1,8 @@
+To install the qtile settings here simply symlink the conf to ~/.config/qtile/config.py :
+
+   mv ~/.config/qtile/config.py ~/.config/qtile/config.py.bak
+   ln -s config.py ~/.config/qtile/config.py
+
+Or simply execute the install-sh from within the qtile/ directory:
+
+   ./install-sh

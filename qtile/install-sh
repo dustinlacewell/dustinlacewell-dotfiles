@@ -1,0 +1,5 @@
+#!/bin/bash
+
+mv ~/.config/qtile/config.py ~/.config/qtile/config.py.bak
+ln -sf ./config.py ~/.config/qtile/config.py
+

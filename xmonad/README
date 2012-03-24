@@ -3,7 +3,7 @@ To install the xmonad settings here simply symlink the conf to ~/.xmonad :
    cd xmonad
    ln -s xmonad.hs ~/.xmonad/
 
-Or simply execute the install-sh from within the tmux/ directory:
+Or simply execute the install-sh from within the xmonad/ directory:
 
    cd xmonad
    ./install-sh
